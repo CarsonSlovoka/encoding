@@ -1,0 +1,40 @@
+name: ci
+on:
+  push:
+    branches:
+      - master
+      - dev
+defaults:
+  run:
+    shell: pwsh
+jobs:
+  Test-DesktopEdition:
+    runs-on: windows-latest
+    steps:
+      - name: clone repository
+        uses: actions/checkout@v3
+
+      - name: Install deno
+        uses: denoland/setup-deno@v1
+        with:
+          deno-version: 1.X
+
+      - name: check format
+        run: deno fmt --check
+
+      - name: check linting
+        run: deno lint
+
+      - name: run test
+        run: deno test --coverage=./coverage
+
+      - name: generate lcov
+        run: deno coverage ./coverage --lcov --output=./coverage.lcov
+
+      - name: Upload coverage file
+        # https://github.com/marketplace/actions/upload-a-build-artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: coverage-artifact # output filename
+          path: |
+            ./coverage.lcov
