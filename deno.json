@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "deno.window"
+    ],
+    "strict": true
+  },
+  "imports": {
+    "std/": "https://deno.land/std@0.190.0/"
+  },
+  "tasks": {
+    "fmt:lint": "deno fmt && deno lint",
+    "test": "deno test",
+    "testWithCov": "deno test --coverage=./coverage",
+    "genLcov": "deno coverage ./coverage --lcov --output=./coverage/coverage.lcov",
+    "coverageReport": "deno coverage ./coverage"
+  },
+  "lint": {
+    "include": ["src/", "mod.ts"],
+    "exclude": ["src/testdata/"]
+  },
+  "fmt": {
+    "include": ["src/", "mod.ts"],
+    "exclude": ["src/testdata/"],
+    "useTabs": false,
+    "indentWidth": 2,
+    "singleQuote": false,
+    "semiColons": false,
+    "proseWrap": "always"
+  }
+}
