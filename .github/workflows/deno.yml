@@ -31,6 +31,9 @@ jobs:
       - name: generate lcov
         run: deno coverage ./coverage --lcov --output=./coverage.lcov
 
+      - name: simple coverage report
+        run: deno coverage ./coverage
+
       - name: Upload coverage file
         # https://github.com/marketplace/actions/upload-a-build-artifact
         uses: actions/upload-artifact@v3
