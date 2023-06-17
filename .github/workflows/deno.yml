@@ -9,7 +9,7 @@ defaults:
     shell: pwsh
 jobs:
   Test-DesktopEdition:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
       - name: clone repository
         uses: actions/checkout@v3
