@@ -1,5 +1,5 @@
 import { assertEquals } from "std/testing/asserts.ts"
-import { StrToUTF8, UnicodeToUTF8 } from "./encoding.mts"
+import { StrToUTF8, UnicodeToUTF8 } from "./encoding.ts"
 
 const { test } = Deno
 
